@@ -40,7 +40,7 @@ class Solution {
                 }
                
                temp=temp.next;
-            }else if(temp!=null && temp.next!=null && temp.val==temp.next.val){
+            }else if( temp.next!=null && temp.val==temp.next.val){
                 
             //   ListNode newNode = temp.next ;
                int value =temp.val;
