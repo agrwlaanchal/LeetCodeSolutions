@@ -27,7 +27,9 @@ class Solution {
                 if( root.left!=null){
                     averageOfSubtree(root.left);
                 }
-                
+                  if(root.right!=null){
+            averageOfSubtree(root.right);
+                }
             int leftnodes = getSize(root.left); 
             int leftsum = getSum(root.left);
            
@@ -39,9 +41,7 @@ class Solution {
                 res++;
             }
                
-                if(root.right!=null){
-            averageOfSubtree(root.right);
-                }
+              
             
         }
             return res; 
