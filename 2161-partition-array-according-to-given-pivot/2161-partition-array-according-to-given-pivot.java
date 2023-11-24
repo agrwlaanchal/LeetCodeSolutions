@@ -6,26 +6,27 @@ class Solution {
         
         int count=0;
         
+          int[]res = new int[nums.length];
+        int index =0 ;
         
         for(int i=0;i<nums.length;i++){
             
             if(nums[i]==pivot)
                 count++;
             else if(nums[i]<pivot)
-                sm.add(nums[i]);
+            {
+                res[index] = nums[i];
+                index++;
+            }
             else
                 gm.add(nums[i]);
             
         }
         
         
-        int[]res = new int[nums.length];
-        int index =0 ;
-        for(int nu : sm){
-            res[index] = nu;
-            index++;
-        }
+      
         
+       
         for(int j=0;j<count;j++){
             res[index] = pivot;
             index++;
