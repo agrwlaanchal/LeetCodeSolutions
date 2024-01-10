@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Cream Decision</title>
+</head>
+
+<body>
+    <h1>Want to go for ice cream?</h1>
+
+    <img src="https://media1.tenor.com/m/VfFUQPoJR-gAAAAC/cute.gif" alt="Yes GIF" width="200" height="150" id="yesGif" onclick="showLetsGo()">
+
+    <img src="https://media1.tenor.com/m/CyJzmWAjPTEAAAAC/cat-no.gif" alt="No GIF" width="200" height="150" id="noGif" onclick="showAreYouSure()">
+
+    <p id="message"></p>
+
+    <script>
+        function showLetsGo() {
+            const messageElement = document.getElementById('message');
+
+            // Remove existing content
+            clearMessage(messageElement);
+             const noGifElement = document.getElementById('noGif');
+            const yesGifElement = document.getElementById('yesGif');
+            if (noGifElement) noGifElement.remove();
+            if (yesGifElement) yesGifElement.remove();
+
+
+            // Append the "Let's go" gif
+            const letsGoGif = createGifElement('https://media1.tenor.com/m/BravUCrUqT8AAAAd/lets-go-bullish.gif', 'Let\'s Go GIF', 200, 150, 'letsGoGif', showLetsGo);
+            messageElement.appendChild(letsGoGif);
+        }
+
+        function showAreYouSure() {
+            const messageElement = document.getElementById('message');
+
+            // Remove existing content
+            clearMessage(messageElement);
+              const noGifElement = document.getElementById('noGif');
+            const yesGifElement = document.getElementById('yesGif');
+            if (noGifElement) noGifElement.remove();
+            if (yesGifElement) yesGifElement.remove();
+
+		  const areYouSureHeadline = document.createElement('h2');
+            areYouSureHeadline.innerText = 'Are you sure?';
+            messageElement.appendChild(areYouSureHeadline);
+
+
+            // Provide options again
+            const weCanGoGif = createGifElement('https://media1.tenor.com/m/kmLXZZAuQ5wAAAAC/kevin-can-f-himself-allison-mcroberts.gif', 'We Can Go GIF', 200, 150, 'weCanGoGif', showYayyyy);
+            const naahGif = createGifElement('https://media1.tenor.com/m/IA6WhFECrSQAAAAC/nope-nah.gif', 'Naaah GIF', 200, 150, 'naahGif', showNevermind);
+
+            messageElement.appendChild(weCanGoGif);
+            messageElement.appendChild(naahGif);
+        }
+
+        function showYayyyy() {
+            const messageElement = document.getElementById('message');
+
+            // Remove existing content
+            clearMessage(messageElement);
+
+            // Append the "Yayyyy" gif
+            const yayyyyGif = createGifElement('https://media1.tenor.com/m/YEquEHgzgLkAAAAC/lets-go-lets-go-marvel.gif', 'Yayyyy GIF', 200, 150, 'yayyyyGif', showYayyyy);
+            messageElement.appendChild(yayyyyGif);
+        }
+
+        function showNevermind() {
+            const messageElement = document.getElementById('message');
+
+            // Remove existing content
+            clearMessage(messageElement);
+			 const noGifElement = document.getElementById('noGif');
+            const yesGifElement = document.getElementById('yesGif');
+            if (noGifElement) noGifElement.remove();
+            if (yesGifElement) yesGifElement.remove();
+
+            // Append the "Nevermind" gif
+            const nevermindGif = createGifElement('https://media1.tenor.com/m/CjYO8vMAEN8AAAAC/nevermind-ugh.gif', 'Nevermind GIF', 200, 150, 'nevermindGif', showNevermind);
+            messageElement.appendChild(nevermindGif);
+        }
+
+        function createGifElement(src, alt, width, height, id, clickHandler) {
+            const gifElement = document.createElement('img');
+            gifElement.src = src;
+            gifElement.alt = alt;
+            gifElement.width = width;
+            gifElement.height = height;
+            gifElement.id = id; // Assigning ID to the GIF element
+            gifElement.onclick = clickHandler; // Assigning the click handler
+            return gifElement;
+        }
+
+        function clearMessage(element) {
+            // Remove all child elements
+            element.innerHTML = '';
+        }
+    </script>
+</body>
+
+</html>
