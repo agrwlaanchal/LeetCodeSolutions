@@ -13,50 +13,66 @@
  *     }
  * }
  */
+/*
+ pair<int,int> postorder(TreeNode* &root,int sum,int count)
+    {
+        if(root == 0) return {0,0};
+
+        auto l = postorder(root->left,sum,count);
+        auto r = postorder(root->right,sum,count);
+
+        sum = l.first + root->val + r.first;
+        count = l.second + 1 + r.second;
+
+        if(sum / count == root->val) ans++;
+        return {sum,count};
+    }
+
+    int averageOfSubtree(TreeNode* root) {
+        postorder(root,0,0);
+        return ans;
+    }
+*/
 class Solution {
    
     int res=0; 
+    
+    public int[]traversal (TreeNode root, int sum, int count){
+        
+         int[]temp = new int[2];
+        
+        if(root==null)
+        {
+           
+            temp[1]=0;
+            temp[0]=0;
+            return temp; 
+        }
+          
+          int[] left = traversal(root.left, sum, count);
+          int[]right = traversal(root.right, sum, count);
+          
+        sum = left[0]+right[0]+root.val;
+        count = left[1]+right[1]+1;
+        
+        
+       if(sum/count==root.val)
+           res++;
+       
+        temp[0]=sum;
+        temp[1]=count; 
+     
+        return temp;
+    }
     public int averageOfSubtree(TreeNode root) {
         
+        traversal(root, 0, 0);
     
-        if(root==null)
-            return res;
-       
-        
-           if(root.left!=null)
-            averageOfSubtree(root.left);
-        
-        if(root.right!=null)
-            averageOfSubtree(root.right);
-       
-        
-        int sum = average(root.left) + average(root.right)+ root.val; 
-        int count = getCount(root.left) + getCount(root.right)+1;
-        
-        if(sum/count==root.val)
-            res++;
-        
-       // System.out.println(root.val +" "+sum + " "+count);
-        
-     
         return res; 
         
     }
     
     
-    int average(TreeNode root){
-        if(root==null)
-            return 0;
-        
-        return root.val+ average(root.left)+average(root.right);
-    }
-    
-    int getCount(TreeNode root){
-        if(root==null)
-            return 0;
-        
-        return 1+getCount(root.left)+getCount(root.right);
-    }
      
     
 }
