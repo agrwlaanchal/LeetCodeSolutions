@@ -21,6 +21,14 @@ class Solution {
     
         if(root==null)
             return res;
+       
+        
+           if(root.left!=null)
+            averageOfSubtree(root.left);
+        
+        if(root.right!=null)
+            averageOfSubtree(root.right);
+       
         
         int sum = average(root.left) + average(root.right)+ root.val; 
         int count = getCount(root.left) + getCount(root.right)+1;
@@ -30,12 +38,7 @@ class Solution {
         
        // System.out.println(root.val +" "+sum + " "+count);
         
-        if(root.left!=null)
-            averageOfSubtree(root.left);
-        
-        if(root.right!=null)
-            averageOfSubtree(root.right);
-       
+     
         return res; 
         
     }
