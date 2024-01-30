@@ -14,56 +14,46 @@
  * }
  */
 class Solution {
-     int res = 0; 
+   
+    int res=0; 
     public int averageOfSubtree(TreeNode root) {
-     
-     
         
+    
+        if(root==null)
+            return res;
         
-     
+        int sum = average(root.left) + average(root.right)+ root.val; 
+        int count = getCount(root.left) + getCount(root.right)+1;
         
-            if(root!=null){
-                
-                if( root.left!=null){
-                    averageOfSubtree(root.left);
-                }
-                  if(root.right!=null){
+        if(sum/count==root.val)
+            res++;
+        
+       // System.out.println(root.val +" "+sum + " "+count);
+        
+        if(root.left!=null)
+            averageOfSubtree(root.left);
+        
+        if(root.right!=null)
             averageOfSubtree(root.right);
-                }
-            int leftnodes = getSize(root.left); 
-            int leftsum = getSum(root.left);
-           
-         //   System.out.println(root.val+" " +leftnodes+ " "+leftsum);
-            int rightnodes = getSize(root.right);
-            int rightsum = getSum(root.right);
-            
-            if( (leftsum+rightsum+root.val)/(leftnodes+rightnodes+1) == root.val ){
-                res++;
-            }
-               
-              
-            
-        }
-            return res; 
+       
+        return res; 
         
     }
     
     
-    public int getSize(TreeNode root){
+    int average(TreeNode root){
         if(root==null)
             return 0;
         
-        return 1+getSize(root.left)+getSize(root.right);
+        return root.val+ average(root.left)+average(root.right);
     }
     
-    public int getSum(TreeNode root){
-        
+    int getCount(TreeNode root){
         if(root==null)
-            return 0; 
+            return 0;
         
-            return root.val+getSum(root.left)+getSum(root.right);
-            
-        
+        return 1+getCount(root.left)+getCount(root.right);
     }
+     
     
 }
