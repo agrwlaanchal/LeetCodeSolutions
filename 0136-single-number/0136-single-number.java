@@ -1,7 +1,19 @@
 class Solution {
     public int singleNumber(int[] nums) {
      
-        int len = nums.length/2 +1;
+        Arrays.sort(nums);
+        
+        for(int i=0 ; i<nums.length-1;i=i+2){
+            
+            if(nums[i]!=nums[i+1]){
+                return nums[i];
+            }
+            
+        }
+        
+        return nums[nums.length-1];
+       
+      /*  int len = nums.length/2 +1;
         HashMap<Integer, Integer> hmap= new HashMap<>(len);
         
         for(int num : nums){
@@ -20,7 +32,7 @@ class Solution {
                 return entry.getKey();
         }
         
-        return -1;
+        return -1;*/
         
     }
 }
