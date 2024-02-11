@@ -30,12 +30,12 @@ class Solution {
             }
         }
 
-       for(int i=0;i<dp.length;i++){
+    /*   for(int i=0;i<dp.length;i++){
             for(int j=0;j<dp[i].length;j++){
                 System.out.print(dp[i][j]+" ");
             }
             System.out.println();
-        }
+        }*/
         return dp[dp.length-1][dp[0].length-1];
 
     
