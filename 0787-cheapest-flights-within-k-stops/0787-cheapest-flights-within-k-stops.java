@@ -43,7 +43,7 @@ class Solution {
         
         while(!q.isEmpty() && stops <=k){
             
-            System.out.println(stops+" "+k);
+          //  System.out.println(stops+" "+k);
             int size = q.size();
 
 
