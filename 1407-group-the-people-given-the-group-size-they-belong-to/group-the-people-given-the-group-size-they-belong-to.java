@@ -1,7 +1,7 @@
 class Solution {
     public List<List<Integer>> groupThePeople(int[] groupSizes) {
 
-      TreeMap<Integer,List<Integer>> hmap = new TreeMap<>();
+      HashMap<Integer,List<Integer>> hmap = new HashMap<>();
 
         for(int i=0 ;i<groupSizes.length;i++){
 
