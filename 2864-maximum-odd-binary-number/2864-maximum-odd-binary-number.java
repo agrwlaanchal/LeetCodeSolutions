@@ -17,13 +17,7 @@ class Solution {
         }
         
         String res= "";
-        if(count1==0){
-            
-            for(int i=0;i<count0;i++){
-                res=res+'0';
-            }
-            return res;     
-        }
+      
         
         
         for(int i=0;i<count1-1;i++){
