@@ -1,12 +1,11 @@
 class Solution {
     public int bagOfTokensScore(int[] tokens, int power) {
         
-        
-        Arrays.sort(tokens);
-        
         if(tokens.length==0){
             return 0; 
         }
+        
+        Arrays.sort(tokens);
         
         if(power<tokens[0]){
             return 0; 
