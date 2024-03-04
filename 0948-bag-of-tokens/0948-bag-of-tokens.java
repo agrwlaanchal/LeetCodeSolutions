@@ -4,6 +4,13 @@ class Solution {
         
         Arrays.sort(tokens);
         
+        if(tokens.length==0){
+            return 0; 
+        }
+        
+        if(power<tokens[0]){
+            return 0; 
+        }
         int start =0;
         int end = tokens.length-1;
         int count=0;
