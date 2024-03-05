@@ -8,7 +8,6 @@ class Solution {
         while(start<end){
             
             char c = s.charAt(start);
-        //    System.out.println(c+" "+start+" "+end+" "+s.substring(start, end+1));
             if(s.charAt(start)==s.charAt(end)){
                 while(start<s.length() &&  s.charAt(start)==c ){
                     
@@ -19,11 +18,10 @@ class Solution {
                     end--;
                 }
             }else{
-               return end-start+1;
+               break;
             }
             
         }
-     //   System.out.println(start+" "+end + s.substring(start, end+1));
         if(start==end){
             return 1; 
         }else if(start>end){
