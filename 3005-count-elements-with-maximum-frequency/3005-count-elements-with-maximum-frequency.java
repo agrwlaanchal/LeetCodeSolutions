@@ -8,9 +8,8 @@ class Solution {
             
             hmap.put(nums[i], hmap.getOrDefault(nums[i], 0)+1);
          
-            if(hmap.get(nums[i])>count){
-                count=hmap.get(nums[i]);
-            }
+            count = Math.max(count, hmap.get(nums[i]));
+
         }
         
         int rescount  =0;
