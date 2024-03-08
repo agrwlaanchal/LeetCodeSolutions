@@ -12,16 +12,12 @@ class Solution {
         int rescount  =0;
         
         
-        for(int num : hmap.values()){
-            if(num==count){
-                rescount++;
-            }
-        }
-       /* for(Map.Entry<Integer, Integer> entry: hmap.entrySet()){
+        
+        for(Map.Entry<Integer, Integer> entry: hmap.entrySet()){
             if(entry.getValue()==count){
                 rescount ++;;
             }
-        }*/
+        }
         
         return rescount*count; 
     }
