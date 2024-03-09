@@ -6,7 +6,7 @@ class Solution {
         // keep initial res as -1;
         
         
-        int res=-1;
+        
         
         int index1 =0; 
         int index2 = 0;
@@ -23,7 +23,7 @@ class Solution {
             
         }
         
-        return res ; 
+        return -1 ; 
         
     }
 }
