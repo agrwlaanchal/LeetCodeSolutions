@@ -8,7 +8,7 @@ class Solution {
         
         
         
-        int index1 =0; 
+     /*   int index1 =0; 
         int index2 = 0;
         
         while(index1<nums1.length && index2<nums2.length){
@@ -23,7 +23,20 @@ class Solution {
             
         }
         
-        return -1 ; 
+        return -1 ; */
+        
+        
+        HashSet<Integer> hset = new HashSet<>();
+        for(int i=0; i<nums1.length; i++){
+            hset.add(nums1[i]);
+        }
+        
+        for(int i=0;i<nums2.length; i++){
+            if(hset.contains(nums2[i])){
+                return nums2[i];
+            }
+        }
+        return -1;
         
     }
 }
