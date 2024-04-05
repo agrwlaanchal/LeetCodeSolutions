@@ -1,9 +1,9 @@
 class Solution {
     public String makeGood(String s) {
         
-        if(s.length()==0){
+       /* if(s.length()==0){
             return s; 
-        }
+        }*/
         
         Stack<Character> st = new Stack();
         
