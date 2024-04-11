@@ -17,10 +17,8 @@ class Solution {
             
             while(!st.isEmpty()&& st.peek()>c &&k>0){
                 int n = st.pop();
-                if(n!=0){
                     
                     k--;
-                }
                
             }
              st.push(c);
