@@ -13,10 +13,15 @@ class Solution {
         for(int i=0; i<nums.length();i++){
             
             char c =nums.charAt(i);
+           
             
-            while(!st.isEmpty() && st.peek() > c && k > 0 )
-            {st.pop();
-             k--;
+            while(!st.isEmpty()&& st.peek()>c &&k>0){
+                int n = st.pop();
+                if(n!=0){
+                    
+                    k--;
+                }
+               
             }
              st.push(c);
             
@@ -27,18 +32,21 @@ class Solution {
             k--;
         }
         
-       StringBuilder sb = new StringBuilder();
-        while (!st.isEmpty()) {
-            sb.append(st.pop());
+        StringBuilder sb = new StringBuilder();
+        while(!st.isEmpty()){
+            sb.append(""+st.pop());
         }
         
-        sb.reverse();
-        
-        //remove 0 at beiginning, except 0
-        while (sb.length() > 1 && sb.charAt(0) == '0') {
-            sb.deleteCharAt(0);
+        //System.out.println(sb.reverse());
+         String res =  sb.reverse().toString();
+        int index=0;
+        while(index<res.length()&&res.charAt(index)=='0'){
+            index++;
         }
+        if(index>=res.length()){
+            return "0";
+        }
+        return res.substring(index);
         
-        return sb.toString();        
     }
 }
