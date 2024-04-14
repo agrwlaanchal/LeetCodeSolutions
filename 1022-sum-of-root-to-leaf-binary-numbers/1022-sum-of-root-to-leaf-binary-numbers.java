@@ -30,7 +30,7 @@ class Solution {
         val = val+root.val;
         
         if(root.left==null&&root.right==null){
-            sum=sum+convert(val);
+            sum=sum+Integer.parseInt(val, 2);
             return ;
         }
         
@@ -39,15 +39,6 @@ class Solution {
         
     }
     
-    public int convert(String val){
-        int sum =0;
-        int power =0;
-        for(int i=val.length()-1; i>=0;i--){
-            sum=sum+ Integer.valueOf(""+val.charAt(i))*(int)Math.pow(2,power);
-            power++;
-        }
-        return sum; 
-        
-    }
+    
     
 }
