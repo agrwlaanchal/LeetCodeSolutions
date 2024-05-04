@@ -3,21 +3,16 @@ class Solution {
         
         Arrays.sort(people);
         
-       //  int end = people.length-1;
           int count =0; 
         
-        
-     
-        
-       // boolean visited[] = new boolean[people.length];
-        int start =0; 
-        
+           int start =0; 
+          int end = people.length-1;
+          
       
         //2 2 8 8 11
         while(start<people.length ){
             
             
-           // System.out.println("this is for start "+start);
             int oldstart  = start;
             
             if(people[start]<0){
@@ -25,8 +20,6 @@ class Solution {
                 continue;
             }
             
-            //find the end  
-            int end = people.length-1;
             
             while(start<end){
          //       System.out.println("start "+start+" end "+end);
