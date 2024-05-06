@@ -16,6 +16,10 @@ class Solution {
         
         while(t!=null){
             
+          while(!st.isEmpty()&&st.peek().val<t.val){
+              st.pop();
+          }
+            
             st.push(t);
             t=t.next;
             
@@ -29,11 +33,11 @@ class Solution {
                 res=temp;
                 st.pop();
             }else{
-                if(temp.val>=res.val){
+                
                     temp.next = res;
                     res=temp;
                     
-                }
+                
                 st.pop();
             }
             
