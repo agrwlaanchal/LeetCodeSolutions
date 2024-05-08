@@ -20,10 +20,17 @@ class Solution {
             return true;
         }
         
+        if(!isBalanced(root.left)){
+            return false;
+        }
+        if(!isBalanced(root.right)){
+            return false;
+        }
+        
         int lh = height(root.left);
         int rh = height(root.right);
         
-        return Math.abs(lh-rh)<=1 && isBalanced(root.left) &&isBalanced(root.right);
+        return Math.abs(lh-rh)<=1 ;
         
         
     }
