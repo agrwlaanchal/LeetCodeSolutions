@@ -27,15 +27,16 @@ class Solution {
         // and level of each var here. 
          // so we can have 4 variables. 
         
-        
-        traverse(root, x, y, 0);
-        if(root.val==x){
+          if(root.val==x){
             level_x=0;
         }
         
         if(root.val==y){
             level_y=0;
         }
+        
+        traverse(root, x, y, 0);
+      
         
        if(par_x!=par_y && level_x==level_y){
            return true;
