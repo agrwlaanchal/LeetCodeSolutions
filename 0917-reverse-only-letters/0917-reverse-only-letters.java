@@ -1,0 +1,39 @@
+    class Solution {
+        public String reverseOnlyLetters(String s) {
+
+            int start =0;
+            int end = s.length()-1;
+
+            char[]arr = new char[s.length()];
+            while(start<=end){
+
+                char c = s.charAt(start);
+                char t = s.charAt(end);
+               /* if(!Character.isAlphabetic(c) && !Character.isAlphabetic(t)){
+                     arr[start]=c;
+                    arr[end]=t;
+                    start++;
+                    end--;
+                } else */if(!Character.isAlphabetic(c)){
+                    arr[start]=c;
+                    start++;
+                }else if(!Character.isAlphabetic(t)){
+                    arr[end]=t;
+                    end--;
+                }else{
+
+                    arr[start]=t;
+                    arr[end]=c;
+                    start++;
+                    end--;
+
+                }
+
+
+            }
+
+            return new String(arr);
+
+
+        }
+    }
