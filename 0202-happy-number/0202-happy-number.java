@@ -6,6 +6,9 @@ class Solution {
         
         while(n>=1){
             
+             if(n==1){
+                return true;
+            }
             int temp = n;
             
             
@@ -16,9 +19,7 @@ class Solution {
                 temp=temp/10;
             }
             //System.out.println(num);
-            if(num==1){
-                return true;
-            }
+           
             
             
             if(hset.contains(num)){
