@@ -5,7 +5,7 @@ class Solution {
         
         int[]arr  =new int[26];
         Arrays.fill(arr,0);
-        HashMap<Character, Integer> hmap = new HashMap<>();
+      //  HashMap<Character, Integer> hmap = new HashMap<>();
         for(char c: letters){
             arr[c-'a']++;
         }
