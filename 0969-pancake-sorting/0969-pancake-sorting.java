@@ -4,9 +4,9 @@ class Solution {
         List<Integer> res = new ArrayList<>();
         
         int[]temp = arr.clone();
-        System.out.println(Arrays.toString(temp));
+   //     System.out.println(Arrays.toString(temp));
         Arrays.sort(temp);
-        System.out.println(Arrays.toString(arr));
+   //     System.out.println(Arrays.toString(arr));
         int index =arr.length-1;
        while(!Arrays.equals(arr, temp)) {
            
