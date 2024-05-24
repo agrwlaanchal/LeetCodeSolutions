@@ -5,26 +5,35 @@ class Solution {
         
         int[]arr  =new int[26];
         Arrays.fill(arr,0);
-      //  HashMap<Character, Integer> hmap = new HashMap<>();
+        HashMap<String, Integer> hmap = new HashMap<>();
         for(char c: letters){
             arr[c-'a']++;
         }
         
         List<String> subset = new ArrayList<>();
         int index =0;
-         calsub(words, subset, arr, 0,score);
+         calsub(words, subset, arr, 0,score,hmap);
       
         return max;
     }
     
-    public void calsub(String[]nums,List<String> subset , int[]arr , int index, int[] score){
+    public void calsub(String[]nums,List<String> subset , int[]arr , int index, int[] score, HashMap<String, Integer> hmap){
         
         int sum =0 ; 
          for(String str: subset){
          
-            for(int i=0;i<str.length();i++){
-                sum=sum+score[str.charAt(i)-'a'];
-            }
+             if(hmap.containsKey(str)){
+                 sum=sum+hmap.get(str);
+             }else{
+                 int tempsum =0; 
+                 for(int i=0;i<str.length();i++){
+                   tempsum=tempsum+score[str.charAt(i)-'a'];
+                 }
+                 hmap.put(str, tempsum);
+                 sum=sum+tempsum;
+             }
+            
+             
     
         }
     
@@ -44,7 +53,7 @@ class Solution {
             
             if(temp.toString().equals(nums[i])){
                subset.add(nums[i]); 
-               calsub(nums, subset, arr,i+1,score);
+               calsub(nums, subset, arr,i+1,score,hmap);
                 subset.remove(subset.size()-1);
                 
             }
