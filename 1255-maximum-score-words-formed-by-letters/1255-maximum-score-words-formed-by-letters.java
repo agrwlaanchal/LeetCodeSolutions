@@ -2,31 +2,17 @@ class Solution {
    int max =0; 
     public int maxScoreWords(String[] words, char[] letters, int[] score) {
        
-     //precalculate score of each word 
-        
-    /*    HashMap<String, Integer> scoreMap = new HashMap<>();
-        for(String word: words){
-            
-            int sum =0;
-            for(int i=0;i<word.length();i++){
-                sum=sum+score[word.charAt(i)-'a'];
-            }
-            scoreMap.put(word, sum);
-            
-        }*/
         
         int[]arr  =new int[26];
         Arrays.fill(arr,0);
         HashMap<Character, Integer> hmap = new HashMap<>();
         for(char c: letters){
             arr[c-'a']++;
-            //hmap.put(c, hmap.getOrDefault(c,0)+1);
         }
         
         List<String> subset = new ArrayList<>();
         int index =0;
          calsub(words, subset, arr, 0,score);
-    
       
         return max;
     }
@@ -36,12 +22,10 @@ class Solution {
         int sum =0 ; 
          for(String str: subset){
          
-        //             int sum =0;
             for(int i=0;i<str.length();i++){
                 sum=sum+score[str.charAt(i)-'a'];
             }
     
-    //         sum=sum+scoreMap.get(str);
         }
     
         max=Math.max(max, sum);
@@ -49,29 +33,24 @@ class Solution {
         for(int i=index; i<nums.length;i++){
             
             String s = nums[i];
-            String temp = ""; 
+            StringBuilder temp = new StringBuilder(); 
             for(int j=0; j<s.length();j++){
-         char c = s.charAt(j);
+             char c = s.charAt(j);
                 if(arr[c-'a']>0){
-                    temp=temp+s.charAt(j);
+                    temp=temp.append(s.charAt(j));
                     arr[c-'a']--;
                 }
-                /*if(hmap.containsKey(s.charAt(j)) && hmap.get(s.charAt(j))>0){
-                    
-                    hmap.put(s.charAt(j), hmap.get(s.charAt(j))-1);
-                }*/
             }
             
-            if(temp.equals(nums[i])){
+            if(temp.toString().equals(nums[i])){
                subset.add(nums[i]); 
                calsub(nums, subset, arr,i+1,score);
                 subset.remove(subset.size()-1);
                 
             }
-            
-            for(int j=0;j<temp.length();j++){
-                char t = temp.charAt(j);
-                //hmap.put(t, hmap.getOrDefault(t,0)+1);
+            String te = temp.toString();
+            for(int j=0;j<te.length();j++){
+                char t = te.charAt(j);
                 arr[t-'a']++;
             }
            
