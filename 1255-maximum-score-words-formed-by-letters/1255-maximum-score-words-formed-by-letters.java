@@ -2,6 +2,19 @@ class Solution {
    int max =0; 
     public int maxScoreWords(String[] words, char[] letters, int[] score) {
        
+     //precalculate score of each word 
+        
+        HashMap<String, Integer> scoreMap = new HashMap<>();
+        for(String word: words){
+            
+            int sum =0;
+            for(int i=0;i<word.length();i++){
+                sum=sum+score[word.charAt(i)-'a'];
+            }
+            scoreMap.put(word, sum);
+            
+        }
+        
         HashMap<Character, Integer> hmap = new HashMap<>();
         for(char c: letters){
             hmap.put(c, hmap.getOrDefault(c,0)+1);
@@ -9,22 +22,23 @@ class Solution {
         
         List<String> subset = new ArrayList<>();
         int index =0;
-         calsub(words, subset, hmap, 0,score);
+         calsub(words, subset, hmap, 0,scoreMap);
     
       
         return max;
     }
     
-    public void calsub(String[]nums,List<String> subset , HashMap<Character, Integer> hmap, int index,int[] score){
+    public void calsub(String[]nums,List<String> subset , HashMap<Character, Integer> hmap, int index, HashMap<String, Integer> scoreMap){
         
         //res.add(new ArrayList<>(subset));
         int sum =0 ; 
          for(String str: subset){
-               for(int i=0;i<str.length();i++){
+             sum=sum+scoreMap.get(str);
+              /* for(int i=0;i<str.length();i++){
                    char c =str.charAt(i);
                   // System.out.println("c is "+c);
                    sum=sum+score[c-'a'];
-               }
+               }*/
             }
         max=Math.max(max, sum);
         
@@ -41,7 +55,7 @@ class Solution {
             
             if(temp.equals(nums[i])){
                subset.add(nums[i]); 
-               calsub(nums, subset, hmap,i+1,score);
+               calsub(nums, subset, hmap,i+1,scoreMap);
                 subset.remove(subset.size()-1);
                 
             }
