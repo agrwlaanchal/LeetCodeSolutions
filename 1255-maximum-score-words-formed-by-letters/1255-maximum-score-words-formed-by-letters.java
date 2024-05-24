@@ -4,7 +4,7 @@ class Solution {
        
      //precalculate score of each word 
         
-        HashMap<String, Integer> scoreMap = new HashMap<>();
+    /*    HashMap<String, Integer> scoreMap = new HashMap<>();
         for(String word: words){
             
             int sum =0;
@@ -13,7 +13,7 @@ class Solution {
             }
             scoreMap.put(word, sum);
             
-        }
+        }*/
         
         int[]arr  =new int[26];
         Arrays.fill(arr,0);
@@ -25,17 +25,23 @@ class Solution {
         
         List<String> subset = new ArrayList<>();
         int index =0;
-         calsub(words, subset, arr, 0,scoreMap);
+         calsub(words, subset, arr, 0,score);
     
       
         return max;
     }
     
-    public void calsub(String[]nums,List<String> subset , int[]arr , int index, HashMap<String, Integer> scoreMap){
+    public void calsub(String[]nums,List<String> subset , int[]arr , int index, int[] score){
         
         int sum =0 ; 
          for(String str: subset){
-             sum=sum+scoreMap.get(str);
+         
+        //             int sum =0;
+            for(int i=0;i<str.length();i++){
+                sum=sum+score[str.charAt(i)-'a'];
+            }
+    
+    //         sum=sum+scoreMap.get(str);
         }
     
         max=Math.max(max, sum);
@@ -58,7 +64,7 @@ class Solution {
             
             if(temp.equals(nums[i])){
                subset.add(nums[i]); 
-               calsub(nums, subset, arr,i+1,scoreMap);
+               calsub(nums, subset, arr,i+1,score);
                 subset.remove(subset.size()-1);
                 
             }
