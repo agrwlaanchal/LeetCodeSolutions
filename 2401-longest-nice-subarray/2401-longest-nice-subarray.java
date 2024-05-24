@@ -2,9 +2,9 @@ class Solution {
     public int longestNiceSubarray(int[] nums) {
         
     
-        int max = 1;
+        int max = 0;
         int start =0 ;
-        int end =1;
+        int end =0;
      outer:  while(end<nums.length){
            
             for(int i=start;i<end;i++){
