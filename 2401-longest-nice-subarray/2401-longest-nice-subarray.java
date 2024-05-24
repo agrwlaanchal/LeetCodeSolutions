@@ -4,7 +4,7 @@ class Solution {
     
         int max = 1;
         int start =0 ;
-        int end =0;
+        int end =1;
      outer:  while(end<nums.length){
            
             for(int i=start;i<end;i++){
