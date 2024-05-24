@@ -21,15 +21,13 @@ class Solution {
         int end= p.length()-1;
         p = p+p;
         while(end<s.length()){
-          //  System.out.println(start+" "+end);
-            String temp = s.substring(start, end+1);
-            //System.out.println(temp+" "+p);
+            //String temp = s.substring(start, end+1);
             
             int[]temparr = new int[26];
             Arrays.fill(temparr, 0);
   
-            for(int i=0;i<temp.length();i++){
-                char ch = temp.charAt(i);
+            for(int i=start;i<=end;i++){
+                char ch = s.charAt(i);
                 temparr[ch-'a']++;
             }
             
