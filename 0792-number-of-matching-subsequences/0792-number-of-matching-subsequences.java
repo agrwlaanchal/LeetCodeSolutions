@@ -19,16 +19,14 @@ class Solution {
        
         int index = -1; 
        
-      // Loop through each character in s1
         for (char c : s1.toCharArray()) { 
            
-          // Find the index of the current character in s2
             index = s2.indexOf(c, index + 1); 
-          // If the character is not found, return false
             if (index == -1) { 
                 return 0;
             }
         }
+        hset.add(s1);
         return 1;
        
     }
