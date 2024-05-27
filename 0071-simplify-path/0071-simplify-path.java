@@ -32,14 +32,14 @@ class Solution {
             res[i]=temp;
         }
         
-        String result="";
+        StringBuilder result =new StringBuilder();
         for(int i=0;i<res.length;i++){
-            result=result+res[i];
+            result.append(res[i]);
         }
         if(result.length()<=0){
             return "/";
         }
-        return result;
+        return result.toString();
         
         
         
