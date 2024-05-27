@@ -13,15 +13,19 @@ class Solution {
             if(str.length()<=0){
                 continue; 
             }
-            if(str.equals(".")){
-                //do nothing 
-            }else if(str.equals("..")){
+            
+            if(!str.equals(".")){
+                if(str.equals("..")){
                 if(!st.isEmpty()){
                     st.pop();
                 }
             }else {
              st.push(str);   
             }
+            }
+            
+            
+           
             
         }
         
