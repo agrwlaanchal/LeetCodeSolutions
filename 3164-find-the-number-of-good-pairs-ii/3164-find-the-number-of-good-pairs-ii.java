@@ -1,12 +1,7 @@
 class Solution {
     public long numberOfPairs(int[] nums1, int[] nums2, int k) {
-     
-        
-        //if nums1[i]%k!=0 : we'll not check for nums2 element. 
-        // nums1[i]%k==0. 
-        
-        // (nums[i]/k)%nums2[j]==0 
-         Arrays.sort(nums2);
+          
+       // Arrays.sort(nums2);
         int n1 = nums1.length;
         long count = 0;
         
