@@ -4,28 +4,22 @@ class Solution {
         int start =0;
         int end =0;
         
-        int[]arr = new int[s.length()];
+       /* int[]arr = new int[s.length()];
         for(int i=0;i<s.length();i++){
             arr[i] = Math.abs(s.charAt(i)-t.charAt(i));
-        }
-        
-        //System.out.println(Arrays.toString(arr));
-        //return -1; 
-
-        
-        int len=0;
-    //    int currsum = arr[0];
-    
+        }*/
         
         
-        while(end<arr.length){
+        int len=0;    
+        
+        while(end<s.length()){
             
-            maxCost = maxCost-arr[end];
+            maxCost = maxCost-(Math.abs(s.charAt(end)-t.charAt(end)));
             if(maxCost>=0){
                 len = Math.max(len, end-start+1);
                 
             }else{
-                maxCost = maxCost+arr[start];
+                maxCost = maxCost+(Math.abs(s.charAt(start)-t.charAt(start)));
                 start++;
             }
             
