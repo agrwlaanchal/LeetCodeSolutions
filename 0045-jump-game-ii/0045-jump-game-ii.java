@@ -21,7 +21,7 @@ class Solution {
             }
             
         }
-        System.out.println(Arrays.toString(res));
+        //System.out.println(Arrays.toString(res));
         return res[res.length-1];
         
     }
