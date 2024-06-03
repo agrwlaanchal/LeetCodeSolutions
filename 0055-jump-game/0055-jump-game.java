@@ -12,7 +12,7 @@ class Solution {
             for(int j=i-1; j>=0;j--){
                 if((nums[j]+j)>=i){
                     res[i]= true; 
-                    break; 
+                    continue; 
                 }
             }
             if(res[i]==false){
