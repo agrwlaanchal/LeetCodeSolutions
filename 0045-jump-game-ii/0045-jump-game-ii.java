@@ -2,27 +2,25 @@ class Solution {
     public int jump(int[] nums) {
         
         
-          int []res = new int[nums.length];
-        Arrays.fill(res, Integer.MAX_VALUE);
+    int[]dp=new int[nums.length];
+    Arrays.fill(dp, Integer.MAX_VALUE);
      
-       res[0]=0;  
+    dp[0]=0;
         
-     for(int i=1; i<nums.length;i++){
+    for(int i=1;i<nums.length;i++){
+        for(int j=0;j<i;j++){
             
-            //to reach at nums[i];
-            
-            for(int j=0; j<i;j++){
-                
-                if(nums[j]+j>=i){
-                    //can reach at i 
-                    res[i] = Math.min(res[i], res[j]+1);
-                }
-                
+            if(j+nums[j]>=i && nums[j]!=0){
+                dp[i] = Math.min(dp[j]+1, dp[i]);
             }
             
         }
-        //System.out.println(Arrays.toString(res));
-        return res[res.length-1];
+    }
+        
+ //       for(int i=0;i<dp.length;i++)
+   //         System.out.print(dp[i]+" ");
+        return dp[nums.length-1];
+        
         
     }
 }
