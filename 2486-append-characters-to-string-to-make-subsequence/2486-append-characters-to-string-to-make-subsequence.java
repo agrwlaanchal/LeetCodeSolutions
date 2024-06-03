@@ -2,20 +2,18 @@ class Solution {
     public int appendCharacters(String s, String t) {
         
         
-        for(int i=0;i<t.length();i++){
-            char c = t.charAt(i);
-            int index = s.indexOf(c);
-            
-            if(index==-1){
-                return t.length()-i;
-            }else{
-                s = s.substring(index+1);
+        
+       int sIndex = 0, tIndex = 0;
+        int sLength = s.length(), tLength = t.length();
+        
+        while (sIndex < sLength && tIndex < tLength) {
+            if (s.charAt(sIndex) == t.charAt(tIndex)) {
+                tIndex++;
             }
-            //System.out.println(c+" "+s);
+            sIndex++;
         }
         
-        return 0; 
-        
+        return tLength - tIndex;
        
         
     }
