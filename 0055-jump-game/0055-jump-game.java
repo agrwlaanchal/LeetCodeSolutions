@@ -5,14 +5,14 @@ class Solution {
         boolean []res = new boolean[nums.length];
        res[0]=true; 
         
-        for(int i=1; i<nums.length;i++){
+      outer:  for(int i=1; i<nums.length;i++){
             
             //to reach at nums[i];
             
             for(int j=i-1; j>=0;j--){
                 if((nums[j]+j)>=i){
                     res[i]= true; 
-                    continue; 
+                    continue outer; 
                 }
             }
             if(res[i]==false){
