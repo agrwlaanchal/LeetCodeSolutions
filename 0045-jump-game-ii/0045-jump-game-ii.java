@@ -7,11 +7,11 @@ class Solution {
      
        res[0]=0;  
         
-      outer:  for(int i=1; i<nums.length;i++){
+     for(int i=1; i<nums.length;i++){
             
             //to reach at nums[i];
             
-            for(int j=i-1; j>=0;j--){
+            for(int j=0; j<i;j++){
                 
                 if(nums[j]+j>=i){
                     //can reach at i 
