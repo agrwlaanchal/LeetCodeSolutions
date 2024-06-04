@@ -1,15 +1,14 @@
 class Solution {
     public int longestPalindrome(String[] words) {
       
-   
+        Arrays.sort(words);
+      //  System.out.println(Arrays.toString(words));
         HashMap<String,Integer> hmap = new HashMap<>();
         int res=0;
         for(String word: words){
             
             String temp = ""+word.charAt(1)+word.charAt(0);
-      //      System.out.println("temp is "+temp +" word is "+word);
             if(hmap.containsKey(temp)){
-        //     System.out.println("map contains temp");
                 res=res+4;
                 hmap.put(temp, hmap.get(temp)-1);
                 if(hmap.get(temp)==0){
@@ -17,7 +16,6 @@ class Solution {
                 }
               
             }else{
-          //      System.out.println("map does not contains temp");
                  if(hmap.containsKey(word)){
                      hmap.put(word, hmap.get(word)+1);
                  }else{
