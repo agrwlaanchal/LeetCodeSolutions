@@ -1,68 +1,47 @@
- class Pair {
-        int capital;
-        int profit;
+import java.util.*;
 
-        Pair(int capital, int profit) {
-            this.capital = capital;
-            this.profit = profit;
-        }
+class Pair {
+    int capital;
+    int profit;
+
+    Pair(int capital, int profit) {
+        this.capital = capital;
+        this.profit = profit;
     }
+}
 
 class Solution {
     public int findMaximizedCapital(int k, int w, int[] profits, int[] capital) {
-        
-     
-        PriorityQueue<Pair> pq = new PriorityQueue<>((a, b) -> {
-            if (b.profit != a.profit) {
-                return Integer.compare(b.profit, a.profit);
-            } else {
-                return Integer.compare(a.capital, b.capital);
-            }
-        });
-        
+        // Priority queue to manage projects by capital (in increasing order)
+        PriorityQueue<Pair> capitalPQ = new PriorityQueue<>((a, b) -> Integer.compare(a.capital, b.capital));
+
+        // Priority queue to manage projects by profit (in decreasing order)
+        PriorityQueue<Pair> profitPQ = new PriorityQueue<>((a, b) -> Integer.compare(b.profit, a.profit));
+
+        // Add all projects to the capital priority queue
         for (int i = 0; i < profits.length; i++) {
-            pq.add(new Pair(capital[i], profits[i]));
+            capitalPQ.add(new Pair(capital[i], profits[i]));
         }
-        
-        int res =w; 
-        
-        int index =0; 
-        
-        while(k>0){
-            
-            boolean flag = false;
-            int size = pq.size();
-            ArrayList<Pair>arr =new ArrayList<>();
-            for(int i=0; i<size;i++){
-                
-                Pair pair = pq.poll();
-            int cap = pair.capital;
-           int profit = pair.profit;
-           // System.out.println("w "+w+" cap "+cap+" profit "+profit);      
-                if(cap<=w){
-                  w=w+profit;
-                    res=res+profit;
-                    k--;
-                    flag=true;
-                    break;   
-                }else{
-                    arr.add(pair);
-                }
-                
+
+        int res = w;
+
+        while (k > 0) {
+            // Transfer all projects that can be afforded to the profit priority queue
+            while (!capitalPQ.isEmpty() && capitalPQ.peek().capital <= w) {
+                profitPQ.add(capitalPQ.poll());
             }
-            
-            if(!flag){
+
+            // If no project can be afforded, break the loop
+            if (profitPQ.isEmpty()) {
                 break;
             }
-            for(Pair p: arr){
-                pq.add(p);
-            }
-            
-            
+
+            // Select the project with the highest profit
+            w += profitPQ.poll().profit;
+            res = w;
+            k--;
         }
-        
-     
-        return res; 
-        
+
+        return res;
     }
 }
