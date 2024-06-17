@@ -3,19 +3,20 @@ class Solution {
         
         int num =(int) Math.sqrt(c);
   
-        HashSet<Integer> arr = new HashSet<>();
-        for(int  i=0;i<=num;i++){
-            
-            int t= i*i;
-            
-            arr.add(t);
-            if(arr.contains(c-t)){
+        int start =0;
+        int end = num;
+        
+        while(start<=end){
+           long sum = (long) start * start + (long) end * end; 
+            if(sum==c){
                 return true;
+            }else if(sum<c){
+                start++;
+            }else{
+                end--;
             }
             
-            
-        }   
-        
+        }
       
         return false;
         
