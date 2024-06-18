@@ -4,30 +4,35 @@ class Solution {
        
         
         TreeMap<Integer,Integer> tmap = new TreeMap<>();
+        int prev = -1;
         for(int i=0; i<profit.length;i++){
-            int prof = profit[i];
-            int diff = difficulty[i];
-            if(tmap.containsKey(diff)){
-                continue;
-            }
-            for(int j=0;j<profit.length;j++){
-                if(difficulty[j]<=diff && profit[j]>=prof){
-                    prof = profit[j];
-                }
-            }
-            tmap.put(diff, prof);
             
+            if(tmap.containsKey(difficulty[i]) && tmap.get(difficulty[i])>profit[i])
+                continue;
+            tmap.put(difficulty[i], profit[i]);
         }
         
-        
-        
-        
-        int res =0; 
+        TreeMap<Integer,Integer> rmap = new TreeMap<>();
         Set<Integer> set = tmap.keySet();
         
+        for(int num: set){
+            int max = tmap.get(num);
+            if(prev!=-1){
+                max = Math.max(prev, tmap.get(num));
+            }
+            rmap.put(num, max);
+            
+            prev = max;
+            
+        }
+    
+        
+        int res =0; 
+        
+        
         for(int num: worker){
-            if(tmap.floorKey(num)!=null){
-                res=res+tmap.get(tmap.floorKey(num));
+            if(rmap.floorKey(num)!=null){
+                res=res+rmap.get(rmap.floorKey(num));
             }
         }
         
