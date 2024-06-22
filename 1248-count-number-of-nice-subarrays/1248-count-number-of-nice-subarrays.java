@@ -1,24 +1,24 @@
 class Solution {
     public int numberOfSubarrays(int[] nums, int k) {
      
-        for(int i=0;i<nums.length;i++){
+        /*for(int i=0;i<nums.length;i++){
             if(nums[i]%2==0){
                 nums[i]=0;
             }else{
                 nums[i]=1;
             }
-        }
+        }*/
         
         
         int curr = 0;
         int res =0;
         
-         HashMap<Integer, Integer> hmap = new HashMap<>();
+        HashMap<Integer, Integer> hmap = new HashMap<>();
         hmap.put(0, 1);
         
         for(int i=0;i<nums.length ;i++){
             
-            curr = curr+nums[i];
+            curr = curr+nums[i]%2;
             if(hmap.containsKey(curr-k)){
                 res=res+hmap.get(curr-k);
             }
