@@ -1,13 +1,13 @@
 class Solution {
     public int numberOfSubarrays(int[] nums, int k) {
      
-        /*for(int i=0;i<nums.length;i++){
+        for(int i=0;i<nums.length;i++){
             if(nums[i]%2==0){
                 nums[i]=0;
             }else{
                 nums[i]=1;
             }
-        }*/
+        }
         
         
         int curr = 0;
