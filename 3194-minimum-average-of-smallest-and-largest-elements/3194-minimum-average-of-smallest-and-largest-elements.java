@@ -12,8 +12,8 @@ class Solution {
         while(start<end){
             
             float num = nums[start]+nums[end];
-            double t = num/2;
-            res=Math.min(res, t);
+            
+            res=Math.min(res, num/2);
             
             start++;
             end--;
