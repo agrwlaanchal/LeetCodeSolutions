@@ -15,20 +15,17 @@ class Solution {
             return null; 
         }
         
-        Stack<Integer> st =new Stack<>();
+       // Stack<Integer> st =new Stack<>();
         ListNode start = head;
         ListNode end = head.next;
         ListNode res = null;
         ListNode resTemp = null;
-        
+         int temp =0; 
         while(end!=null){
             
             if(end.val==0){
                 //empty the stack 
-                int temp=0;
-                while(!st.isEmpty()){
-                    temp+=st.pop();
-                }
+                
                 // get sum
                  //make a new listnode 
                 if(res==null){
@@ -38,10 +35,11 @@ class Solution {
                     resTemp.next = new ListNode(temp);
                     resTemp =resTemp.next; 
                 }
+                temp=0;
                
                 
             }else{
-                st.push(end.val);
+               temp=temp+end.val;
             }
             end=end.next; 
             
