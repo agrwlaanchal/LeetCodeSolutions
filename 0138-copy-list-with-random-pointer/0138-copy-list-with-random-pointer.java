@@ -16,46 +16,53 @@ class Node {
 class Solution {
     public Node copyRandomList(Node head) {
         
+        //first add one node after each node 
+        
         if(head==null){
             return null; 
         }
-        Node temp = null;
-        Node next=null;
         
-        Node curr=head;
-        while(curr!=null ){
+        Node temp=head;
+        while(temp!=null){
+            //save the next
+            Node next = temp.next; 
+            Node t = new Node(temp.val);
+            t.next = temp.next ; 
+            temp.next = t; 
+            temp=t.next;
+        }
+        
+        temp=head;
+        
+        while(temp!=null){
             
-            next = curr.next;
-            curr.next = new Node(curr.val);
-            curr.next.next = next;
-            curr= next; 
+            Node t = temp.random;
+            if(t!=null)
+            temp.next.random = t.next; 
+            else
+                temp.next.random = null;
+            
+            temp=temp.next.next; 
+            
         }
         
-        curr=head;
-        while(curr!=null){
-           if(curr.random!=null)
-            curr.next.random = curr.random.next;
-            curr = curr.next.next; 
-        }
+       Node res= null;
+       temp = head;
+        Node t = null;
+         while(temp!=null){
+             if(res==null){
+                 res=temp.next;
+                 t=res;
+             }else{
+                 t.next = temp.next;
+                 t=t.next;
+             }
+             temp.next = temp.next.next;
+             temp=temp.next;
+             
+             
+         }
         
-        
-          Node original = head, copy = head.next;  
-  
-    // save the start of copied linked list  
-    temp = copy;  
-  
-    // now separate the original list and copied list  
-    while (original != null && copy != null)  
-    {  
-        original.next = (original.next != null)?  
-                    original.next.next : original.next;  
-  
-        copy.next = (copy.next != null) ? copy.next.next  
-                                            : copy.next;  
-        original = original.next;  
-        copy = copy.next;  
-    }  
-    return temp;
-        
+        return res; 
     }
 }
