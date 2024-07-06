@@ -3,7 +3,7 @@ class Solution {
         
         int count = (n-1)*2;
          time = time%count;
-       System.out.println(time);
+       //System.out.println(time);
         while(time>0){
             
             for(int i=1;i<n;i++){
