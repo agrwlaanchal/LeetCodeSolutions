@@ -13,8 +13,8 @@ class Solution {
         
         //compare a value with every other value previous to it. 
         
-        if(head==null || head.next==null)
-        return head;
+   //     if(head==null || head.next==null)
+    //    return head;
         
         ListNode dummy = new ListNode(-1);
    
