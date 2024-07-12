@@ -1,58 +1,30 @@
 class Solution {
-    public int maximumGain(String s, int x, int y) {
+     Stack<Character> st = new Stack<>();
     
+    
+    public int maximumGain(String s, int x, int y) {
         int score=0;
-       //do it with stack 
-        Stack<Character> st = new Stack<>();
-        if(x>y){
-            //remove ab first 
-            // make a stack 
-            // when poping from stack 
-            // b a 
-            // it comes ab 
-            // remove ab again 
-            for(int i=0; i<s.length();i++){
-                char c= s.charAt(i);
-                // removing ab 
-                if(c=='b'){
-                    if(!st.isEmpty() && st.peek()=='a'){
-                        st.pop();
-                        score=score+x;
-                    }else{
-                        st.push(c);
-                    }
-                }else{
-                    st.push(c);
-                }
-            }
-            
-            //pop stack and form string and again remove ab, add y to score 
-            StringBuilder sb = new StringBuilder();
-            while(!st.isEmpty()){
-                char c = st.pop();
-                 if(c=='b'){
-                     if(sb.length()>0 && sb.charAt(sb.length() - 1)=='a'){
-                          sb.deleteCharAt(sb.length() - 1);
-                         score=score+y;
-                     }else{
-                         sb.append(c);
-                     }
-                 }else
-                 {
-                     sb.append(c);
-                 }
-            }
-            return score; 
-            
+      
+        if(x>y){            
+            score=score+removeUsingStack( 'a','b', x,s); //remove ab first
+            score=score+removeusingString( 'b','a',y); //remove ba later
+            return score;             
         }else{
-            //same process for ba. 
-            for(int i=0; i<s.length();i++){
+            score=score+removeUsingStack( 'b','a', y,s); //remove ba first
+            score=score+removeusingString( 'a','b',x); //remove ab later
+            return score; 
+        }  
+    }
+    
+    public int removeUsingStack( char first, char second, int point, String s){
+         int score =0;    
+        for(int i=0; i<s.length();i++){
                 char c= s.charAt(i);
-                // removing ab 
-                if(c=='a'){
-                    if(!st.isEmpty() && st.peek()=='b'){
+            
+                if(c==second){
+                    if(!st.isEmpty() && st.peek()==first){
                         st.pop();
-                        score=score+y;
+                        score=score+point;
                     }else{
                         st.push(c);
                     }
@@ -60,15 +32,18 @@ class Solution {
                     st.push(c);
                 }
             }
-            
-            //pop stack and form string and again remove ab, add y to score 
-            StringBuilder sb = new StringBuilder();
-            while(!st.isEmpty()){
+        return score;
+    }
+    
+    public int removeusingString(char second, char first, int point){
+         StringBuilder sb = new StringBuilder();
+        int score =0;  
+        while(!st.isEmpty()){
                 char c = st.pop();
-                 if(c=='a'){
-                     if(sb.length()>0 && sb.charAt(sb.length() - 1)=='b'){
+                 if(c==second){
+                     if(sb.length()>0 && sb.charAt(sb.length() - 1)==first){
                           sb.deleteCharAt(sb.length() - 1);
-                         score=score+x;
+                         score=score+point;
                      }else{
                          sb.append(c);
                      }
@@ -77,9 +52,6 @@ class Solution {
                      sb.append(c);
                  }
             }
-            return score; 
-        }
-        
-        
+        return score; 
     }
 }
