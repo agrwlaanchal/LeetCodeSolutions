@@ -6,16 +6,11 @@ class Solution {
             return new int[0][0];
         }
         
-        List<Integer> al = Arrays.stream(original).boxed().toList();
-        
-        
-        
         int[][]res = new int[m][n];
         int index =0; 
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
-                int num=al.get(index);
-                //System.out.println("num is "+num);
+                int num=original[index];
                 res[i][j]=num;
                 index++;
             }
