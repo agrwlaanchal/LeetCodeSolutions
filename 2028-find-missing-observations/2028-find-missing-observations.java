@@ -29,11 +29,18 @@ class Solution {
          diff=diff-n;
     
         //while diff>0, keep increasing value of each roll
+        int index =0; 
         while (diff > 0) {
-             for (int i = 0; i < n && diff > 0; i++) {
-                res[i]++;
-                diff--;
+            if(diff<=5){
+                res[index] = res[index]+diff;
+                diff=0;     
+            }else{
+                res[index] = res[index]+5;
+                diff=diff-5; 
             }
+            
+            index++;
+           
         }
         
         //return result array once remaining sum is 0
