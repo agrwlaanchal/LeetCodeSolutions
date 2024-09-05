@@ -21,21 +21,14 @@ class Solution {
         Arrays.fill(res,1);
     
          diff=diff-n;
-    //    System.out.println("diff is "+diff);
-      //  System.out.println(Arrays.toString(res));
+    
         
-        while(diff>0){
-          for(int i=0;i<n;i++){
-            if(diff<=0){
-                break;
-            }
-            res[i]++;
-            diff--;
-        // System.out.println("diff is "+diff);
-        //System.out.println(Arrays.toString(res));
-        }  
-            
-        }
+        while (diff > 0) {
+    for (int i = 0; i < n && diff > 0; i++) {
+        res[i]++;
+        diff--;
+    }
+}
         
         return res; 
         
