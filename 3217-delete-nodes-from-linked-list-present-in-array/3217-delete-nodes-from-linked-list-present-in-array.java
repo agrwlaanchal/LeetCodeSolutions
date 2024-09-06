@@ -11,8 +11,7 @@
 class Solution {
     public ListNode modifiedList(int[] nums, ListNode head) {
         
-        if(nums.length==0)
-            return head; 
+        
        
         //convert array to set 
         Set<Integer> mySet = Arrays.stream(nums).boxed().collect(Collectors.toSet());
