@@ -17,7 +17,7 @@ class Solution {
         //convert array to set 
         Set<Integer> mySet = Arrays.stream(nums).boxed().collect(Collectors.toSet());
        
-      //create a dummy node to handle the case if head is in set 
+       //create a dummy node to handle the case if head is in set 
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         //result node, initially pointing to dummy node
@@ -29,12 +29,13 @@ class Solution {
             
             
             if(!mySet.contains(temp.val)){
-                dummy.next = new ListNode(temp.val);        
+                dummy.next =temp;        
                 dummy=dummy.next;
             }
             temp=temp.next;
             
         }
+        dummy.next = temp;
         return res.next; 
     }
 }
