@@ -8,14 +8,19 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
 class Solution {
     public ListNode modifiedList(int[] nums, ListNode head) {
         
         
        
         //convert array to set 
-        Set<Integer> mySet = Arrays.stream(nums).boxed().collect(Collectors.toSet());
+       HashSet<Integer> mySet =new HashSet<>();
+      for(int n:nums)
+          mySet.add(n);
+        
        
+        
        //create a dummy node to handle the case if head is in set 
         ListNode dummy = new ListNode(0);
         dummy.next = head;
@@ -24,9 +29,7 @@ class Solution {
         
         ListNode temp =head;
         
-        while(temp!=null){
-            
-            
+        while(temp!=null){     
             if(!mySet.contains(temp.val)){
                 dummy.next =temp;        
                 dummy=dummy.next;
