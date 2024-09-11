@@ -3,15 +3,12 @@ class Solution {
         
         int num = start^goal;
         
-        String s = Integer.toBinaryString(num);
         
         int count =0;
-        for(int i=0;i<s.length();i++){
-            if(s.charAt(i)=='1'){
-                count++;
-            }
+       while(num!=0){
+            count += num & 1; 
+            num >>=1; 
         }
-        
         return count; 
         
         
