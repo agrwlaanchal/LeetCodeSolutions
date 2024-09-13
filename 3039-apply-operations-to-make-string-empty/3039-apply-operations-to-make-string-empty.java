@@ -17,25 +17,25 @@ class Solution {
         }
         
         
-       /* HashMap<Character, Integer> temp =new HashMap<>();
+        HashSet<Character> temp =new HashSet<>();
         
         for(Map.Entry<Character, Integer> entry: hmap.entrySet()){
             
             if(entry.getValue()==max){
-                temp.put(entry.getKey(), 1);
-                //hmap.remove(entry.getKey());
+                temp.add(entry.getKey());
+              //  hmap.remove(entry.getKey());
             }
-        }*/
+        }
         
         StringBuilder sb = new StringBuilder();
-       // boolean []visited = new boolean[26];
+       
         
         for(int i=s.length()-1;i>=0;i--){
             
             char c = s.charAt(i);
-            if(sb.indexOf(""+c)==-1 && hmap.containsKey(c) && hmap.get(c)==max ){
+            if( temp.contains(c)  ){
                 sb.append(c);
-              //  visited[c-'a']=true;
+              temp.remove(c);
             }
         }
         
