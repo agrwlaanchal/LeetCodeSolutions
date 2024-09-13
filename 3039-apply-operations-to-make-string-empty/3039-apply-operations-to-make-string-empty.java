@@ -17,7 +17,7 @@ class Solution {
         }
         
         
-        HashMap<Character, Integer> temp =new HashMap<>();
+       /* HashMap<Character, Integer> temp =new HashMap<>();
         
         for(Map.Entry<Character, Integer> entry: hmap.entrySet()){
             
@@ -25,15 +25,17 @@ class Solution {
                 temp.put(entry.getKey(), 1);
                 //hmap.remove(entry.getKey());
             }
-        }
+        }*/
         
         StringBuilder sb = new StringBuilder();
+        boolean []visited = new boolean[26];
+        
         for(int i=s.length()-1;i>=0;i--){
             
             char c = s.charAt(i);
-            if(temp.containsKey(c)){
+            if(hmap.containsKey(c) && hmap.get(c)==max &&!visited[c-'a']){
                 sb.append(c);
-                temp.remove(c);
+                visited[c-'a']=true;
             }
         }
         
