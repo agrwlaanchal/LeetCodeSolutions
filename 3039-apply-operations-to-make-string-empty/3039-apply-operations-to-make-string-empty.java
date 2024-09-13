@@ -28,14 +28,14 @@ class Solution {
         }*/
         
         StringBuilder sb = new StringBuilder();
-        boolean []visited = new boolean[26];
+       // boolean []visited = new boolean[26];
         
         for(int i=s.length()-1;i>=0;i--){
             
             char c = s.charAt(i);
-            if(!visited[c-'a'] && hmap.containsKey(c) && hmap.get(c)==max ){
+            if(sb.indexOf(""+c)==-1 && hmap.containsKey(c) && hmap.get(c)==max ){
                 sb.append(c);
-                visited[c-'a']=true;
+              //  visited[c-'a']=true;
             }
         }
         
