@@ -33,6 +33,8 @@ class Solution {
         for(int i=s.length()-1;i>=0;i--){
             
             char c = s.charAt(i);
+            if(temp.size()<=0)
+                break; 
             if( temp.contains(c)  ){
                 sb.append(c);
                temp.remove(Character.valueOf(c));
