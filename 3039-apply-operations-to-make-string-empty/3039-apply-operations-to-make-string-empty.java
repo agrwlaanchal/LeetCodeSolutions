@@ -17,7 +17,7 @@ class Solution {
         }
         
         
-        HashSet<Character> temp =new HashSet<>();
+        ArrayList<Character> temp =new ArrayList<>();
         
         for(Map.Entry<Character, Integer> entry: hmap.entrySet()){
             
@@ -35,7 +35,7 @@ class Solution {
             char c = s.charAt(i);
             if( temp.contains(c)  ){
                 sb.append(c);
-              temp.remove(c);
+               temp.remove(Character.valueOf(c));
             }
         }
         
