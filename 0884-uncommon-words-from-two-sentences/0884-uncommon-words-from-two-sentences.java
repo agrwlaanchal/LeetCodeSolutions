@@ -11,12 +11,12 @@ class Solution {
                 hmap1.put(st, hmap1.getOrDefault(st,0)+1);
             }
         
-        HashSet<String> hset1 = new HashSet<>();
+        /*HashSet<String> hset1 = new HashSet<>();
         for(Map.Entry<String, Integer> entry: hmap1.entrySet()){
             if(entry.getValue()==1){
                 hset1.add(entry.getKey());
             }
-        }
+        }*/
         
         // we have hashset of string coming once in str1
         
@@ -24,29 +24,29 @@ class Solution {
                 hmap2.put(st, hmap2.getOrDefault(st,0)+1);
             }
         
-        HashSet<String> hset2 = new HashSet<>();
+        /*HashSet<String> hset2 = new HashSet<>();
         for(Map.Entry<String, Integer> entry: hmap2.entrySet()){
             if(entry.getValue()==1){
                 hset2.add(entry.getKey());
             }
-        }
+        }*/
         
         //hset 2 of string coming once in str2
          
         ArrayList<String> res =new ArrayList<>();
-        for(String st : hset1){
-            if(!hmap2.containsKey(st)){
-                res.add(st);
+        
+        for(Map.Entry<String, Integer> entry: hmap1.entrySet()){
+            if(entry.getValue()==1 && !hmap2.containsKey(entry.getKey())){
+                res.add(entry.getKey());
             }
         }
         
-        
-        for(String st : hset2){
-            if(!hmap1.containsKey(st)){
-                res.add(st);
+        for(Map.Entry<String, Integer> entry: hmap2.entrySet()){
+            if(entry.getValue()==1 && !hmap1.containsKey(entry.getKey())){
+                res.add(entry.getKey());
             }
         }
-        
+    
         
         
         String[]result =new String[res.size()];
