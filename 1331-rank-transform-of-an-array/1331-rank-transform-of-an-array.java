@@ -3,8 +3,8 @@ class Solution {
      
         int temp[] = arr.clone();
         Arrays.sort(temp);
-        System.out.println(Arrays.toString(temp));
-        System.out.println(Arrays.toString(arr));
+    //    System.out.println(Arrays.toString(temp));
+     //   System.out.println(Arrays.toString(arr));
         
         TreeMap<Integer,Integer> tmap =new TreeMap<>();
         int rank =1;
