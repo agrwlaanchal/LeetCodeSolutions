@@ -25,11 +25,12 @@ int res2 = -1;
                                     res = i-prev;
                                     res1 =prev ; 
                                     res2= i;
-                                    prev = i;
-                                   //  System.out.println("res is "+res+" res2 "+res2+" res1 "+res1);
-                                }else{
-                                    prev = i; 
                                 }
+                                    
+                                   //  System.out.println("res is "+res+" res2 "+res2+" res1 "+res1);
+                                
+                                    prev = i; 
+                                
                             }
                            // System.out.println("prev number is "+prev);
                     }
